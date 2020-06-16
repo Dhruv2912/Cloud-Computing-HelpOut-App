@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Helpout</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+      <!-- CSS -->
+      <link rel="stylesheet" href="{{ url_for('static',filename='css/nearme.css') }}">
+      <!-- css/style.css -->
+    </head>
+
+    <body>
+      <!-- Navbar -->
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+          <img src="C:\Users\fordh\OneDrive\Desktop\ASU COURSES\SEM 2\CSE 546 CC\Project 2 - HelpOut\imgs\logo.jpg" width="100" height="100" class="d-inline-block align-top" alt="">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active" ><a class="nav-link brandtitle" href="/" style="display: block;">HelpOut</a></li>
+        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Collapse Sections -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <!-- Left side -->
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 text-center">
+            <li class="nav-item active" ></li><a class="nav-link" href="/">Home</a></li>
+          </ul>
+          <!-- Right side -->
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0 text-center">
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="userinfo"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Donation Modal -->
+      <div id="modal-donation" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">You are doing an amazing thing.</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="donationform">
+            <div class="txtbox">
+                <input type="text" placeholder="Your Email" id="d-login-email" required>
+            </div>
+            <div class="txtbox">
+              <input type="text" placeholder="Donation Amount" id="d-amount" required>
+            </div>
+            <div class="txtbox">
+              <input type="text" placeholder="Bank Name" id="d-bankname" required>
+            </div>
+            <div class="txtbox">
+              <input type="text" placeholder="Account Number" id="d-account" required>
+            </div>
+            <input type="hidden" id="docId" value="">
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="Donate">  
+            </div>
+          </form>
+        </div>
+      </div>
+
+  
+
+      <!-- Main page container -->
+      <div class="container" id="maincontainer">
+          <header class="jumbotron">
+            <div class="container">
+              <h1 style="text-align: center;">Causes Near You That Needs Help!</h1>
+              <p class='align'>If you are looking to help this is the right place.
+                View Causes and contribute!	</p>
+            </div>
+          </header>
+          <div class="row">
+            <div id="map"></div>
+          </div>
+      </div>  
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+
+    <!-- script for making api request -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- script for map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDicE8wQSGD8TGaj2RQtVRJJfIwtQNn6eU&callback=initMap&libraries=geometry"
+    async defer></script>
+  
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+
+    <!-- Credentials of Firebase -->
+    <script src="{{ url_for('static',filename='scripts/credentials.js') }}"></script>
+    <script src="{{ url_for('static',filename='scripts/map.js') }}"></script>
+
+    <!-- JavaScripts -->
+    <script src="{{ url_for('static',filename='scripts/index.js') }}"></script>
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
